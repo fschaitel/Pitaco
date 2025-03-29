@@ -1,0 +1,80 @@
+## PITACO: Previsor de Resultados do Brasileirão 2024
+
+### Autor: Felipe Schaitel  
+
+---
+
+### 1. Introdução
+Este documento tem como objetivo registrar e apresentar a aplicação de Machine Learning em um projeto pessoal de caráter experimental e educacional. Trata-se do PITACO, uma aplicação que busca prever os resultados de partidas do Campeonato Brasileiro de Futebol - Série A, edição 2024.
+
+O objetivo principal é explorar a construção de um modelo de classificação capaz de estimar as probabilidades de vitória do mandante, empate ou vitória do visitante, utilizando dados reais e técnicas introdutórias de ciência de dados.
+
+---
+
+### 2. Tecnologias utilizadas
+- Linguagem: Python
+- Bibliotecas principais: pandas, scikit-learn, imbalanced-learn, streamlit
+- Modelo de machine learning: **RandomForestClassifier**
+- Interface: Streamlit
+- Dados: CSV com informações de partidas da temporada 2024
+
+---
+
+### 3. Etapas do desenvolvimento
+
+#### 3.1 Coleta e preparação dos dados
+Foram utilizados dados estatísticos dos jogos da Série A de 2024, contendo atributos como:
+- Time mandante
+- Time visitante
+- Número de vitórias, empates, derrotas
+- Saldo de gols
+- Posição na tabela
+
+Os dados foram tratados com a biblioteca `pandas`, convertendo nomes para códigos numéricos e normalizando as colunas.
+
+#### 3.2 Balanceamento dos dados
+Foi identificado um desequilíbrio na quantidade de empates em relação às demais classes. Para mitigar isso, foi utilizado o SMOTE (Synthetic Minority Oversampling Technique) da biblioteca `imbalanced-learn`, que gera exemplos sintéticos para equilibrar as classes antes do treinamento.
+
+#### 3.3 Treinamento do modelo
+Foi utilizado o modelo `RandomForestClassifier`, uma técnica baseada em várias árvores de decisão que trabalham em conjunto. O modelo foi treinado com:
+```python
+model = RandomForestClassifier(random_state=42)
+model.fit(X, y)
+```
+Onde `X` representa os atributos dos times (mandante e visitante) e `y` representa o resultado real da partida (0 = vitória do mandante, 1 = empate, 2 = vitória do visitante).
+
+#### 3.4 Interface interativa
+Com o uso do `streamlit`, foi criada uma interface simples e intuitiva que permite ao usuário selecionar dois times e visualizar as probabilidades previstas para cada possível resultado. A interface também conta com elementos visuais como emojis e fundo temático de gramado para reforçar a identidade do futebol.
+
+---
+
+### 4. Lógica de previsibilidade
+O modelo aprende com dados reais e busca padrões que se repetem nos confrontos. Por exemplo, se times em determinada posição e com certos indicadores têm maior chance de vencer, o modelo reconhece isso e aplica aos novos jogos simulados.
+
+A previsão é feita através do método `predict_proba()`, que retorna a probabilidade de cada classe:
+```python
+probs = model.predict_proba([novo_confronto])
+```
+
+Apesar de o modelo funcionar bem, ainda apresenta uma tendência levemente desbalanceada para empates, o que está sendo observado como uma oportunidade para melhorias futuras.
+
+---
+
+### 5. Considerações finais
+Este projeto, ainda que simples, representa um exercício valioso de machine learning supervisionado, manipulação de dados, balanceamento de classes e interfaces para visualização de resultados.
+
+A experiência de desenvolver o PITACO mostrou a importância da experimentação para consolidar o aprendizado e revelou o potencial criativo da tecnologia quando aplicada em contextos culturais e populares como o futebol.
+
+Possíveis evoluções futuras incluem:
+- Previsão de placares (regressão)
+- Simulações completas de rodadas ou campeonatos
+- Uso de dados históricos de várias temporadas
+
+---
+
+### 6. Referências
+- Scikit-learn documentation: https://scikit-learn.org
+- Imbalanced-learn documentation: https://imbalanced-learn.org
+- Streamlit documentation: https://streamlit.io
+- Dados do Brasileirão 2024: Fabio Schirmann [https://www.kaggle.com/datasets/fabioschirmann/brasileiro-2024-srie-a-dataset]
+
