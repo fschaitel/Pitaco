@@ -74,7 +74,7 @@ Open the URL displayed in the terminal (usually http://localhost:8501)
 
 ## 🌐 Try it online:
 
-👉 [Click here to open PITACO in your browser](https://your-app.streamlit.app)
+👉 [Click here to open PITACO in your browser]([https://your-app.streamlit.app](https://pitaco-pysaqfjwjkhxncqd43ftmf.streamlit.app/))
 
 > ⚠️ It might take a few seconds to load on the first visit.
 
