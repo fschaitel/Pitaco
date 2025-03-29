@@ -12,7 +12,7 @@ Dado um confronto entre dois times (mandante vs visitante), o modelo retorna a p
 
 - 🏠 Vitória do mandante  
 - ⚖️ Empate  
-- 🚗 Vitória do visitante  
+- ✈️ Vitória do visitante  
 
 Os resultados são exibidos interativamente em uma aplicação web.
 
@@ -88,7 +88,7 @@ Selecione dois times e o sistema exibirá algo como:
 🎯 Probabilidades para Flamengo vs Palmeiras
 - 🏠 Mandante vence: 58.4%
 - ⚖️ Empate: 23.7%
-- 🚗 Visitante vence: 17.9%
+- ✈️ Visitante vence: 17.9%
 ```
 
 ---
