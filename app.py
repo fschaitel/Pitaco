@@ -36,7 +36,7 @@ df['away_team_enc'] = le_team.transform(df['away_team'])
 
 # Mapear resultado
 result_map = {'H': 0, 'D': 1, 'A': 2}
-inv_result_map = {0: '🏠 Vitória do mandante', 1: '⚖️ Empate', 2: '🚗 Vitória do visitante'}
+inv_result_map = {0: '🏠 Vitória do mandante', 1: '⚖️ Empate', 2: '✈️ Vitória do visitante'}
 df['result_enc'] = df['result'].map(result_map)
 
 # Preparar dados para treino
