@@ -12,7 +12,7 @@ Given a match between two teams (home vs away), the model returns the predicted 
 
 - 🏠 Home team win  
 - ⚖️ Draw  
-- 🚗 Away team win  
+- ✈️ Away team win  
 
 These results are displayed interactively in a web app.
 
@@ -88,7 +88,7 @@ Select two teams and the system will output something like:
 🎯 Probabilities for Flamengo vs Palmeiras
 - 🏠 Home win: 58.4%
 - ⚖️ Draw: 23.7%
-- 🚗 Away win: 17.9%
+- ✈️ Away win: 17.9%
 ```
 
 ---
