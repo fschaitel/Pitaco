@@ -1,5 +1,9 @@
 # ⚽ Brazilian Football Match Predictor - 2024 Season
 
+<p align="center">
+  <img src="docs/pitaco.png" alt="PITACO Banner" width="700">
+</p>
+
 This project uses **Machine Learning and real match data** to predict the outcome probabilities (home win, draw, away win) for matches in the 2024 Brazilian football league (Campeonato Brasileiro Série A).
 
 It features a visual interface built with **Streamlit** and a classification model trained using **Random Forest + SMOTE** to address class imbalance.
