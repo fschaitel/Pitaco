@@ -8,7 +8,7 @@ from imblearn.over_sampling import SMOTE
 st.markdown("""
     <style>
     .stApp {
-        background-image: url('https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=2448,h=1632,fit=crop/mnlqpZaW31i8aBMn/chatgpt-image-30-de-mar.-de-2025-22_10_12-YNqBDpbyLoCn59pX.png');
+        background-image: url('https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=2448,h=1632,fit=crop/mnlqpZaW31i8aBMn/chatgpt-image-4-de-abr.-de-2025-00_30_59-ALpeBe3QOGSl2rPA.png');
         background-size: cover;
         background-position: center;
     }
