@@ -1,3 +1,4 @@
+
 ## PITACO: Previsor de Resultados do Brasileirão 2024
 
 ### Autor: Felipe Schaitel  
@@ -13,10 +14,10 @@ O objetivo principal é explorar a construção de um modelo de classificação 
 
 ### 2. Tecnologias utilizadas
 - Linguagem: Python
-- Bibliotecas principais: pandas, scikit-learn, imbalanced-learn, streamlit
+- Bibliotecas principais: pandas, scikit-learn, imbalanced-learn, joblib, streamlit
 - Modelo de machine learning: **RandomForestClassifier**
 - Interface: Streamlit
-- Dados: CSV com informações de partidas da temporada 2024
+- Dados: CSV com informações de partidas da temporada 2024 enriquecido com features históricas
 
 ---
 
@@ -30,7 +31,11 @@ Foram utilizados dados estatísticos dos jogos da Série A de 2024, contendo atr
 - Saldo de gols
 - Posição na tabela
 
-Os dados foram tratados com a biblioteca `pandas`, convertendo nomes para códigos numéricos e normalizando as colunas.
+Com a evolução do projeto, novas **features derivadas do histórico acumulado até cada partida** foram adicionadas:
+- `home_points_so_far`, `away_points_so_far`: pontos acumulados antes do jogo
+- `home_goal_diff_so_far`, `away_goal_diff_so_far`: saldo de gols até aquele momento
+
+Essas informações foram calculadas dinamicamente, evitando vazamento de dados (data leakage) e enriquecendo o contexto de cada linha.
 
 #### 3.2 Balanceamento dos dados
 Foi identificado um desequilíbrio na quantidade de empates em relação às demais classes. Para mitigar isso, foi utilizado o SMOTE (Synthetic Minority Oversampling Technique) da biblioteca `imbalanced-learn`, que gera exemplos sintéticos para equilibrar as classes antes do treinamento.
@@ -41,7 +46,7 @@ Foi utilizado o modelo `RandomForestClassifier`, uma técnica baseada em várias
 model = RandomForestClassifier(random_state=42)
 model.fit(X, y)
 ```
-Onde `X` representa os atributos dos times (mandante e visitante) e `y` representa o resultado real da partida (0 = vitória do mandante, 1 = empate, 2 = vitória do visitante).
+Onde `X` representa os atributos enriquecidos e `y` representa o resultado real da partida (0 = vitória do mandante, 1 = empate, 2 = vitória do visitante). O modelo foi salvo com `joblib`.
 
 #### 3.4 Interface interativa
 Com o uso do `streamlit`, foi criada uma interface simples e intuitiva que permite ao usuário selecionar dois times e visualizar as probabilidades previstas para cada possível resultado. A interface também conta com elementos visuais como emojis e fundo temático de gramado para reforçar a identidade do futebol.
@@ -56,7 +61,7 @@ A previsão é feita através do método `predict_proba()`, que retorna a probab
 probs = model.predict_proba([novo_confronto])
 ```
 
-Apesar de o modelo funcionar bem, ainda apresenta uma tendência levemente desbalanceada para empates, o que está sendo observado como uma oportunidade para melhorias futuras.
+Na versão 1.1.0, o modelo passou a considerar variáveis que expressam o desempenho acumulado dos times, o que trouxe previsões mais realistas e contextualizadas.
 
 ---
 
@@ -69,12 +74,26 @@ Possíveis evoluções futuras incluem:
 - Previsão de placares (regressão)
 - Simulações completas de rodadas ou campeonatos
 - Uso de dados históricos de várias temporadas
+- Implementação de rankings e modos de campeonato
 
 ---
 
-### 6. Referências
+### 6. Histórico de versões
+
+#### v1.0.0
+- Primeira versão funcional com modelo baseado apenas nos nomes dos times (codificados)
+- Interface visual básica
+
+#### v1.1.0
+- Inclusão de features derivadas do histórico das partidas
+- Criação de CSV enriquecido
+- Atualização da interface para uso do novo modelo
+- Acurácia e confiabilidade mais realistas
+
+---
+
+### 7. Referências
 - Scikit-learn documentation: https://scikit-learn.org
 - Imbalanced-learn documentation: https://imbalanced-learn.org
 - Streamlit documentation: https://streamlit.io
 - Dados do Brasileirão 2024: Fabio Schirmann [https://www.kaggle.com/datasets/fabioschirmann/brasileiro-2024-srie-a-dataset]
-
